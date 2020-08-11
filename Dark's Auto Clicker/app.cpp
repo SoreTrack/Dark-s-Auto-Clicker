@@ -1,10 +1,6 @@
 #include "app.h"
-#include "timer.h"
-
 App::App() {};
 App::~App() {};
-
-Timer* timer = nullptr;
 
 void App::init(const char* title, int xpos, int ypos, int width, int height)
 {
@@ -33,8 +29,6 @@ void App::init(const char* title, int xpos, int ypos, int width, int height)
 
 void App::handleEvent()
 {
-	timer = new Timer();
-
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -44,29 +38,14 @@ void App::handleEvent()
 			switch (event.key.keysym.sym)
 			{
 				case SDLK_f:
-					bool timeFinish = timer->getStop();
-					bool started = timer->isStarted();
-					if (started == true) { // Verify is the timer is started
-						timer->timeLoop();
-						if (timeFinish == true) {
-							timer->stopTimer();
-
-							std::cout << "You said f*ck you to the program.\n";
-							std::cout << "The program is angry.\n";
-							std::cout << "The program will closed because you said f*ck you to it.\n";
-							isRunning = false;
-						}
-					}
-					else { // Start the timer
-						timer->startTimer(5000);
-						timer->timeLoop();
-					}
+					std::cout << "You said f*ck you to the program.\n";
+					std::cout << "The program is angry.\n";
+					std::cout << "The program will closed because you said f*ck you to it.\n";
+					isRunning = false;
 					break;
 			}
 		}
 	}
-	
-	delete timer;
 }
 
 void App::update()
