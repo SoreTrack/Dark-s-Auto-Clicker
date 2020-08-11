@@ -21,6 +21,12 @@ void App::init(const char* title, int xpos, int ypos, int width, int height)
 			std::cout << "Renderer Successfully Created! ...\n";
 		}
 
+		TTF_Init();
+		if (TTF_Init())
+		{
+			std::cout << "Font Successfully Initialised! ...\n";
+		}
+
 		isRunning = true;
 	} else {
 		isRunning = false;
@@ -71,8 +77,7 @@ void App::handleEvent()
 
 void App::GUI()
 {
-	// Font
-
+	// Rectangle
 	bClick.x = 275;
 	bClick.y = 200;
 	bClick.w = 150;
@@ -83,11 +88,23 @@ void App::GUI()
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-	SDL_RenderPresent(renderer);
+	// Text
+	font = TTF_OpenFont("arial.ttf", 20);
+	color = { 255, 255, 255 };
+	surface = TTF_RenderText_Solid(font, "Auto Click", color);
+	texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	tClick.x = 305;
+	tClick.y = 211;
+
+	SDL_QueryTexture(texture, NULL, NULL, &tClick.w, &tClick.h);
+
+	SDL_RenderCopy(renderer, texture, NULL, &tClick);
 }
 
 void App::render()
 {
+	SDL_RenderPresent(renderer);
 	SDL_RenderClear(renderer);
 }
 
@@ -95,6 +112,9 @@ void App::clean()
 {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
+	SDL_DestroyTexture(texture);
+	SDL_FreeSurface(surface);
+	TTF_Quit();
 	SDL_Quit();
 }
 

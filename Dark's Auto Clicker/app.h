@@ -2,6 +2,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <SDL.h>
+#include <SDL_ttf.h>
 
 class App {
 public:
@@ -28,5 +29,12 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
-	SDL_Rect bClick;
+	TTF_Font* font;
+	SDL_Color color;
+	SDL_Surface* surface;
+	SDL_Texture* texture;
+
+	SDL_Rect bClick; // Auto Click Button
+
+	SDL_Rect tClick; // Auto Click Text
 };
