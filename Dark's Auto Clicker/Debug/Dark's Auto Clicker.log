@@ -1,5 +1,3 @@
 ﻿  app.cpp
-C:\Users\win8\source\repos\Dark's Auto Clicker\Dark's Auto Clicker\app.cpp(99,7): warning C4101: 'i' : variable locale non référencée
-  timer.cpp
-  Génération de code en cours...
+C:\Users\win8\source\repos\Dark's Auto Clicker\Dark's Auto Clicker\app.cpp(112,7): warning C4101: 'i' : variable locale non référencée
   Dark's Auto Clicker.vcxproj -> C:\Users\win8\source\repos\Dark's Auto Clicker\Debug\Dark's Auto Clicker.exe

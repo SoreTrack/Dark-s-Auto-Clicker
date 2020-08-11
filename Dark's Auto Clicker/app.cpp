@@ -32,29 +32,63 @@ void App::handleEvent()
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
+		if (event.type == SDL_QUIT)
+		{
+			isRunning = false;
+		}
+		if (event.type == SDL_MOUSEBUTTONDOWN)
+		{
+			int x = event.motion.x;
+			int y = event.motion.y;
+			
+			if ((x > bClick.x) && (x < bClick.x + bClick.w) && (y > bClick.y) && (y < bClick.y + bClick.h)) // Button Auto Click
+			{
+				std::cout << "Button clicked !\n";
+			}
+		}
 		if (event.type == SDL_KEYDOWN)
 		{
-			
-			switch (event.key.keysym.sym)
+			if (event.key.keysym.sym == SDLK_f)
 			{
-				case SDLK_f:
-					std::cout << "You said f*ck you to the program.\n";
+				keyF++;
+				keyF++;
+				if (keyF == 10)
+				{
+					std::cout << "\nYou said f*ck you to the program.\n";
 					std::cout << "The program is angry.\n";
 					std::cout << "The program will closed because you said f*ck you to it.\n";
+					Sleep(2000);
 					isRunning = false;
-					break;
+				}
+			}
+
+			if (keyF > 0) {
+				keyF--;
 			}
 		}
 	}
 }
 
-void App::update()
-{}
+void App::GUI()
+{
+	// Font
+
+	bClick.x = 275;
+	bClick.y = 200;
+	bClick.w = 150;
+	bClick.h = 50;
+
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_RenderDrawRect(renderer, &bClick);
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+	SDL_RenderPresent(renderer);
+}
 
 void App::render()
 {
 	SDL_RenderClear(renderer);
-	SDL_RenderPresent(renderer);
 }
 
 void App::clean()

@@ -11,7 +11,7 @@ public:
 	void init(const char* title, int xpos, int ypos, int width, int height);
 
 	void handleEvent();
-	void update();
+	void GUI();
 	void render();
 	void clean();
 
@@ -20,9 +20,13 @@ public:
 	bool running();
 
 private:
-	bool autoClick = false;
+	int keyF = 0;
 
-	bool isRunning;
+	bool autoClick;
+
+	bool isRunning = true;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+
+	SDL_Rect bClick;
 };
