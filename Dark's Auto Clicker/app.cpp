@@ -54,6 +54,16 @@ void App::init(const char* title, int xpos, int ypos, int width, int height) // 
 		);
 		isRunning = false;
 	}
+	std::cout << "\n--------------------------------------------------------------------------------\n";
+
+	std::cout << "Copyright 2020, SoreTrack, All rights reserved.\n";
+
+	std::cout << "\nThis is a closed ALPHA. Please, report all bugs and issues to SoreTrack.\n";
+	std::cout << "An ALPHA mean that only mains features are added.\n";
+	std::cout << "My Discord : SoreTrack#1048\n\n";
+
+	std::cout << "--------------------------------------------------------------------------------\n";
+
 	std::cout << "TIP : Press F5 to start the auto clicker !\n";
 	std::cout << "TIP : Press ESCAPE or F7 to stop the auto clicker !\n";
 	std::cout << "TIP : Hold F7 to kill the program !\n";
