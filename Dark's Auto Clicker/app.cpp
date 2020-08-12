@@ -45,7 +45,8 @@ void App::init(const char* title, int xpos, int ypos, int width, int height) // 
 		}
 
 		isRunning = true;
-	} else {
+	}
+	else {
 		MessageBox(
 			0,
 			(LPCWSTR)L"SDL2 can not be initialized :(\nYou may contact me on discord : SoreTrack#1048",
@@ -91,9 +92,9 @@ void App::handleEvent()
 			std::cout << time << std::endl;
 			if (time >= 1000) {
 				MessageBox(
-					0, 
-					(LPCWSTR)L"User a sucessfuly grab the ShotGun\nThe program has been killed !", 
-					(LPCWSTR)L"Nice job ! You've killed the program !", 
+					0,
+					(LPCWSTR)L"User a sucessfuly grab the ShotGun\nThe program has been killed !",
+					(LPCWSTR)L"Nice job ! You've killed the program !",
 					MB_ICONSTOP | MB_OK | MB_DEFBUTTON2
 				);
 				isRunning = false;
@@ -106,7 +107,7 @@ void App::handleEvent()
 	{
 		keyCode = 3;
 		pressed = true;
-		while (GetAsyncKeyState(VK_ESCAPE) & 0x8000) { } // Prevent to hold
+		while (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {} // Prevent to hold
 		pressed = false;
 	}
 
@@ -127,7 +128,7 @@ void App::handleEvent()
 				std::cout << "Enter the number of CPS you want to have : ";
 				std::cin >> CPS;
 			}
-			
+
 			if ((x > bClick.x) && (x < bClick.x + bClick.w) && (y > bClick.y) && (y < bClick.y + bClick.h) || keyCode == 1) // Button Auto Click
 			{
 				if (!autoClick)
