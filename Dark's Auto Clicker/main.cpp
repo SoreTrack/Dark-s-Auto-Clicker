@@ -7,7 +7,7 @@ int main(int argc, char* args[])
 {
     app = new App();
 
-    app->init("Dark's Auto Clicker", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 700, 400);
+    app->init("Dark's Auto Clicker CLOSED ALPHA v0.1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 700, 400);
 
     while (app->running()) {
         app->handleEvent();
