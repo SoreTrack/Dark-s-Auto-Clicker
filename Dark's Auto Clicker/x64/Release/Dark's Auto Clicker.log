@@ -1,0 +1,28 @@
+﻿  main.cpp
+  app.cpp
+app.obj : error LNK2001: symbole externe non résolu SDL_DestroyTexture
+app.obj : error LNK2001: symbole externe non résolu __imp_GetCursorPos
+app.obj : error LNK2001: symbole externe non résolu SDL_RenderCopy
+app.obj : error LNK2001: symbole externe non résolu SDL_RenderClear
+app.obj : error LNK2001: symbole externe non résolu SDL_DestroyRenderer
+app.obj : error LNK2001: symbole externe non résolu SDL_Init
+app.obj : error LNK2001: symbole externe non résolu SDL_DestroyWindow
+app.obj : error LNK2001: symbole externe non résolu __imp_mouse_event
+app.obj : error LNK2001: symbole externe non résolu SDL_RenderDrawRect
+app.obj : error LNK2001: symbole externe non résolu SDL_Quit
+app.obj : error LNK2001: symbole externe non résolu SDL_QueryTexture
+app.obj : error LNK2001: symbole externe non résolu TTF_Init
+app.obj : error LNK2001: symbole externe non résolu TTF_RenderText_Solid
+app.obj : error LNK2001: symbole externe non résolu TTF_OpenFont
+app.obj : error LNK2001: symbole externe non résolu SDL_PollEvent
+app.obj : error LNK2001: symbole externe non résolu __imp_GetAsyncKeyState
+app.obj : error LNK2001: symbole externe non résolu SDL_FreeSurface
+app.obj : error LNK2001: symbole externe non résolu SDL_CreateRenderer
+app.obj : error LNK2001: symbole externe non résolu SDL_RenderPresent
+app.obj : error LNK2001: symbole externe non résolu SDL_CreateWindow
+app.obj : error LNK2001: symbole externe non résolu __imp_MessageBoxW
+app.obj : error LNK2001: symbole externe non résolu TTF_Quit
+app.obj : error LNK2001: symbole externe non résolu SDL_SetRenderDrawColor
+app.obj : error LNK2001: symbole externe non résolu SDL_CreateTextureFromSurface
+MSVCRT.lib(exe_main.obj) : error LNK2001: symbole externe non résolu main
+C:\Users\win8\source\repos\Dark's Auto Clicker\x64\Release\Dark's Auto Clicker.exe : fatal error LNK1120: 25 externes non résolus
