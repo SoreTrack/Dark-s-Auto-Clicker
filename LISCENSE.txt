@@ -9,6 +9,7 @@ Contact me :
 
 Special thanks for : (more will be added later)
 - Darkxav : Inspired me for making this program and one of the first person to test it.
+- Twistcent : Main tester.
 
 
 I know that nobody will read this, but if you did, thank you ! 
