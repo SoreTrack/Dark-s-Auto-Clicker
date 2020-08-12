@@ -9,8 +9,8 @@
 
 class App {
 public:
-	App();
-	~App();
+	App() {};
+	~App() {};
 
 	void init(const char* title, int xpos, int ypos, int width, int height);
 

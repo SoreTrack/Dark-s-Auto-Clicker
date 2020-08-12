@@ -1,8 +1,5 @@
 #include "app.h"
 
-App::App() {};
-App::~App() {};
-
 void App::init(const char* title, int xpos, int ypos, int width, int height) // Error code 0
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
@@ -250,6 +247,9 @@ void App::GUI()
 	SDL_QueryTexture(texture, NULL, NULL, &rDev.w, &rDev.h);
 
 	SDL_RenderCopy(renderer, texture, NULL, &rDev);
+
+	scCPS = NULL;
+	delete scCPS;
 }
 
 void App::render()

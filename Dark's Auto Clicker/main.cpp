@@ -18,5 +18,8 @@ int main(int argc, char* args[])
 
     app->clean();
 
+    app = NULL;
+    delete app;
+
     return 0;
 }
