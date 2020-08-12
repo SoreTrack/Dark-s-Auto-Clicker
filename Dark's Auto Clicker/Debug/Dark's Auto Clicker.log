@@ -1,10 +1,2 @@
-﻿  app.cpp
-C:\Users\win8\source\repos\Dark's Auto Clicker\Dark's Auto Clicker\app.cpp(5,15): warning C4150: suppression de pointeur vers type incomplet 'SDL_Window' ; aucun destructeur appelé
-C:\SDL2\include\SDL_video.h(90): message : voir la déclaration de 'SDL_Window'
-C:\Users\win8\source\repos\Dark's Auto Clicker\Dark's Auto Clicker\app.cpp(6,17): warning C4150: suppression de pointeur vers type incomplet 'SDL_Renderer' ; aucun destructeur appelé
-C:\SDL2\include\SDL_render.h(132): message : voir la déclaration de 'SDL_Renderer'
-C:\Users\win8\source\repos\Dark's Auto Clicker\Dark's Auto Clicker\app.cpp(7,13): warning C4150: suppression de pointeur vers type incomplet '_TTF_Font' ; aucun destructeur appelé
-C:\SDL2\include\SDL_ttf.h(98): message : voir la déclaration de '_TTF_Font'
-C:\Users\win8\source\repos\Dark's Auto Clicker\Dark's Auto Clicker\app.cpp(9,16): warning C4150: suppression de pointeur vers type incomplet 'SDL_Texture' ; aucun destructeur appelé
-C:\SDL2\include\SDL_render.h(138): message : voir la déclaration de 'SDL_Texture'
+﻿  main.cpp
   Dark's Auto Clicker.vcxproj -> C:\Users\win8\source\repos\Dark's Auto Clicker\Debug\Dark's Auto Clicker.exe

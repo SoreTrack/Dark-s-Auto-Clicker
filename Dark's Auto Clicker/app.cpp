@@ -1,13 +1,6 @@
 #include "app.h"
 
-App::~App() 
-{
-	delete window;
-	delete renderer;
-	delete font;
-	delete surface;
-	delete texture;
-}
+App::~App() { }
 
 void App::init(const char* title, int xpos, int ypos, int width, int height) // Error code 0
 {
@@ -50,7 +43,7 @@ void App::init(const char* title, int xpos, int ypos, int width, int height) // 
 			std::cout << "Font Successfully Initialised! ...\n";
 		}
 
-		isRunning = true;
+		this->isRunning = true;
 	}
 	else {
 		MessageBox(
@@ -59,7 +52,7 @@ void App::init(const char* title, int xpos, int ypos, int width, int height) // 
 			(LPCWSTR)L"SDL Error ! Error 0:1",
 			MB_ICONSTOP | MB_OK | MB_DEFBUTTON2
 		);
-		isRunning = false;
+		this->isRunning = false;
 	}
 	std::cout << "\n--------------------------------------------------------------------------------\n";
 
@@ -82,15 +75,15 @@ void App::handleEvent()
 	if (GetAsyncKeyState(VK_F5) != 0 && pressed == false) // F5 code 1
 	{
 		keyCode = 1;
-		pressed = true;
+		this->pressed = true;
 		while (GetAsyncKeyState(VK_F5) & 0x8000) {} // Prevent to hold
-		pressed = false;
+		this->pressed = false;
 	}
 
 	if (GetAsyncKeyState(VK_F7) != 0 && pressed == false) // F7 code 2
 	{
 		keyCode = 2;
-		pressed = true;
+		this->pressed = true;
 		int time = 0;
 		while (GetAsyncKeyState(VK_F7) & 0x8000) {
 			Sleep(1);
@@ -103,18 +96,18 @@ void App::handleEvent()
 					(LPCWSTR)L"Nice job ! You've killed the program !",
 					MB_ICONSTOP | MB_OK | MB_DEFBUTTON2
 				);
-				isRunning = false;
+				this->isRunning = false;
 			}
 		}
-		pressed = false;
+		this->pressed = false;
 	}
 
 	if (GetAsyncKeyState(VK_ESCAPE) != 0 && pressed == false) // ESCAPE code 3
 	{
 		keyCode = 3;
-		pressed = true;
+		this->pressed = true;
 		while (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {} // Prevent to hold
-		pressed = false;
+		this->pressed = false;
 	}
 
 	SDL_Event event;
@@ -122,7 +115,7 @@ void App::handleEvent()
 	{
 		if (event.type == SDL_QUIT)
 		{
-			isRunning = false;
+			this->isRunning = false;
 		}
 		if (event.type == SDL_MOUSEBUTTONDOWN)
 		{
@@ -148,12 +141,12 @@ void App::handleEvent()
 					Sleep(1000);
 					std::cout << "Auto Clicker activated : " << CPS << " CPS !\n";
 
-					autoClick = true;
+					this->autoClick = true;
 				}
 				else
 				{
 					std::cout << "Auto Clicker desactivated !\n";
-					autoClick = false;
+					this->autoClick = false;
 				}
 			}
 		}
@@ -162,12 +155,12 @@ void App::handleEvent()
 			if (keyCode == 2 || keyCode == 3) // KeyCode F7 & KeyCode ESPCAPE
 			{
 				std::cout << "Auto Clicker desactivated !\n";
-				autoClick = false;
+				this->autoClick = false;
 			}
 			if (event.key.keysym.sym == SDLK_f)
 			{
-				keyF++;
-				keyF++;
+				this->keyF++;
+				this->keyF++;
 				if (keyF == 10)
 				{
 					MessageBox(
@@ -176,12 +169,12 @@ void App::handleEvent()
 						(LPCWSTR)L"What did you do ?? The program look so mad !",
 						MB_ICONSTOP | MB_OK | MB_DEFBUTTON2
 					);
-					isRunning = false;
+					this->isRunning = false;
 				}
 			}
 
 			if (keyF > 0) {
-				keyF--;
+				this->keyF--;
 			}
 		}
 		keyCode = 0;
@@ -190,19 +183,17 @@ void App::handleEvent()
 
 void App::GUI()
 {
-	char* scCPS;
+	const char* scCPS;
 	std::string sCPS;
 	std::stringstream sConvertCPS;
-	sConvertCPS << CPS;
+	sConvertCPS << this->CPS;
 	sCPS = sConvertCPS.str();
 	scCPS = (char*)sCPS.c_str();
 
-	// Click Rectangle
-	bClick.x = 275;
-	bClick.y = 200;
-	bClick.w = 150;
-	bClick.h = 50;
+	sCPS.erase();
+	sConvertCPS.clear();
 
+	// Click Rectangle
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderDrawRect(renderer, &bClick);
 
@@ -210,23 +201,14 @@ void App::GUI()
 
 	// Click Text
 	font = TTF_OpenFont("arial.ttf", 20);
-	color = { 255, 255, 255 };
-	surface = TTF_RenderText_Solid(font, "Auto Click", color);
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-	tClick.x = 305;
-	tClick.y = 211;
+	this->surface = TTF_RenderText_Solid(font, "Auto Click", this->color);
+	this->texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 	SDL_QueryTexture(texture, NULL, NULL, &tClick.w, &tClick.h);
 
 	SDL_RenderCopy(renderer, texture, NULL, &tClick);
 
 	// CPS Rectangle
-	bCPS.x = 323;
-	bCPS.y = 255;
-	bCPS.w = 50;
-	bCPS.h = 20;
-
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderDrawRect(renderer, &bCPS);
 
@@ -234,12 +216,8 @@ void App::GUI()
 
 	// CPS Text
 	font = TTF_OpenFont("arial.ttf", 14);
-	color = { 255, 255, 255 };
-	surface = TTF_RenderText_Solid(font, scCPS, color);
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-	tCPS.x = 341;
-	tCPS.y = 257;
+	this->surface = TTF_RenderText_Solid(font, scCPS, this->color);
+	this->texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 	SDL_QueryTexture(texture, NULL, NULL, &tCPS.w, &tCPS.h);
 
@@ -247,25 +225,22 @@ void App::GUI()
 
 	// Credit
 	font = TTF_OpenFont("arial.ttf", 10);
-	color = { 255, 255, 255 };
-	surface = TTF_RenderText_Solid(font, "By SoreTrack", color);
+	this->surface = TTF_RenderText_Solid(font, "By SoreTrack", this->color);
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-	rDev.x = 0;
-	rDev.y = 390;
 
 	SDL_QueryTexture(texture, NULL, NULL, &rDev.w, &rDev.h);
 
 	SDL_RenderCopy(renderer, texture, NULL, &rDev);
 
+	font = nullptr;
 	scCPS = nullptr;
+	delete font;
 	delete scCPS;
 }
 
 void App::render()
 {
 	SDL_RenderPresent(renderer);
-	SDL_RenderClear(renderer);
 }
 
 void App::clean()
@@ -274,6 +249,7 @@ void App::clean()
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyTexture(texture);
 	SDL_FreeSurface(surface);
+	TTF_CloseFont(font);
 	TTF_Quit();
 	SDL_Quit();
 }
