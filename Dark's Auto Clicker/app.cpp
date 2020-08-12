@@ -1,5 +1,14 @@
 #include "app.h"
 
+App::~App() 
+{
+	delete window;
+	delete renderer;
+	delete font;
+	delete surface;
+	delete texture;
+}
+
 void App::init(const char* title, int xpos, int ypos, int width, int height) // Error code 0
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
@@ -181,11 +190,12 @@ void App::handleEvent()
 
 void App::GUI()
 {
+	char* scCPS;
 	std::string sCPS;
 	std::stringstream sConvertCPS;
 	sConvertCPS << CPS;
 	sCPS = sConvertCPS.str();
-	char* scCPS = (char*)sCPS.c_str();
+	scCPS = (char*)sCPS.c_str();
 
 	// Click Rectangle
 	bClick.x = 275;
@@ -248,7 +258,7 @@ void App::GUI()
 
 	SDL_RenderCopy(renderer, texture, NULL, &rDev);
 
-	scCPS = NULL;
+	scCPS = nullptr;
 	delete scCPS;
 }
 
@@ -270,7 +280,7 @@ void App::clean()
 
 bool App::running()
 {
-	return isRunning;
+	return this->isRunning;
 }
 
 void App::clicker()

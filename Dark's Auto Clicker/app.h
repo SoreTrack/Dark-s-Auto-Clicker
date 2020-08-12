@@ -10,7 +10,7 @@
 class App {
 public:
 	App() {};
-	~App() {};
+	~App();
 
 	void init(const char* title, int xpos, int ypos, int width, int height);
 
@@ -34,10 +34,10 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
-	TTF_Font* font;
+	TTF_Font* font = nullptr;
 	SDL_Color color;
-	SDL_Surface* surface;
-	SDL_Texture* texture;
+	SDL_Surface* surface = nullptr;
+	SDL_Texture* texture = nullptr;
 
 	SDL_Rect bClick;              // Auto Click Button
 	SDL_Rect bCPS;                // CPS Config
