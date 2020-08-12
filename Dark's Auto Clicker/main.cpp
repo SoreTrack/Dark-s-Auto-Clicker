@@ -15,6 +15,11 @@ int main(int argc, char* args[])
         app->App::handleEvent();
         app->App::render();
         app->App::clicker();
+
+        if (app->getUpdate()) {
+            app->App::GUI();
+            app->App::setUpdate(false);
+        }
     }
 
     app->App::clean();
@@ -25,3 +30,5 @@ int main(int argc, char* args[])
 
     return 0;
 }
+
+// Copyright 2020, SoreTrack, All rights reserved.

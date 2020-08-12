@@ -21,6 +21,9 @@ public:
 
 	void clicker();
 
+	void setUpdate(bool value);
+	bool getUpdate();
+
 	bool running();
 
 private:
@@ -30,6 +33,7 @@ private:
 	bool pressed = false;
 	bool autoClick = false;
 
+	bool update = false;
 	bool isRunning = true;
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;

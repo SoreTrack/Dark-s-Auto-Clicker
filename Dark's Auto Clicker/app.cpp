@@ -126,6 +126,9 @@ void App::handleEvent()
 			{
 				std::cout << "Enter the number of CPS you want to have : ";
 				std::cin >> CPS;
+				std::cout << "CPS had been set to : " << CPS << std::endl;
+
+				update = true;
 			}
 
 			if ((x > bClick.x) && (x < bClick.x + bClick.w) && (y > bClick.y) && (y < bClick.y + bClick.h) || keyCode == 1) // Button Auto Click
@@ -190,9 +193,6 @@ void App::GUI()
 	sCPS = sConvertCPS.str();
 	scCPS = (char*)sCPS.c_str();
 
-	sCPS.erase();
-	sConvertCPS.clear();
-
 	// Click Rectangle
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderDrawRect(renderer, &bClick);
@@ -232,6 +232,9 @@ void App::GUI()
 
 	SDL_RenderCopy(renderer, texture, NULL, &rDev);
 
+	sCPS.erase();
+	sConvertCPS.clear();
+
 	font = nullptr;
 	scCPS = nullptr;
 	delete font;
@@ -252,6 +255,20 @@ void App::clean()
 	TTF_CloseFont(font);
 	TTF_Quit();
 	SDL_Quit();
+}
+
+void App::setUpdate(bool value)
+{
+	this->update = value;
+}
+
+bool App::getUpdate()
+{
+	if (this->update == true)
+	{
+		SDL_RenderClear(renderer);
+	}
+	return this->update;
 }
 
 bool App::running()
